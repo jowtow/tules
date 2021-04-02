@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <style>
+            body{
+                background-color: #2D2D2D;
+                color: white;
+                font-family: 'Cascadia Code ExtraLight';
+            }
+            h1{
+                font-size: 25px;
+            }
+            .pomodoro-form-item{
+                display: flex;
+                justify-content: space-between;
+            }
+            input {
+                background-color: rgb(70,70,70);
+                color: white;
+                width: 60px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Pomodoro Config</h1>
+        <div class="pomodoro-form-item">
+            <label>Frequency (mins)</label>
+            <input id="pfreq" type="number" min="1" max="360" />
+        </div>
+        <div class="pomodoro-form-item">
+            <label>Break Duration (mins)</label>
+            <input id="pbreak" type="number" min="1" max="30" />
+        </div>
+        <div class="pomodoro-form-item">
+            <label>Start Hour (24hr)</label>
+            <input id="pstart" type="number" min="1" max="24" />
+        </div>
+        <div class="pomodoro-form-item">
+            <label>End Hour (24hr)</label>
+            <input id="pend" type="number" min="1" max="24" />
+        </div>
+        <div class="pomodoro-form-item">
+            <label>Enabled</label>
+            <input id="penabled" type="checkbox"/>
+        </div>
+    </body>
+</html>

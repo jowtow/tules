@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <style>
         body {
@@ -41,6 +42,11 @@
             overflow-y: scroll;
         }
 
+        #speaker {
+            cursor: pointer;
+            font-size: 1em;
+        }
+
         ::-webkit-scrollbar {
             width: 0;
             /* Remove scrollbar space */
@@ -48,7 +54,10 @@
             /* Optional: just make scrollbar invisible */
         }
 
-        h1 {
+        #heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             font-size: 1.4em;
             padding: 0px 0px 5px 0px;
             margin: 0px 0px 5px 0px;
@@ -64,14 +73,17 @@
             margin: 0px;
             padding-left: 30px;
         }
-        li{
+
+        li {
             margin-bottom: 5px;
         }
     </style>
 </head>
+
 <body>
     <input id="searchText" type="text" placeholder="Dictionary Search . . . " />
     <div id="results">
     </div>
 </body>
+
 </html>

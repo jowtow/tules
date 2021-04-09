@@ -38,9 +38,9 @@ let launcher = {
         let width = display.bounds.width;
         let height = display.bounds.height;
         const win1 = new BrowserWindow({
-            x: width - (300 + 10),
+            x: width - (500 + 10),
             y: height - (210 + 10),
-            width: 300,
+            width: 500,
             height: 210,
             movable: false,
             frame: false,
@@ -57,7 +57,7 @@ let launcher = {
     launchDictionarySearch: function () {
         let win = new BrowserWindow({
             width: 600,
-            height: 600,
+            height: 500,
             frame: false,
             transparent: true,
             autoHideMenuBar: true,

@@ -43,6 +43,20 @@ function setupMessageListeners() {
     setupKeyboardShortcuts();
   })
 
+  ipcMain.on('dictionaryApiCall', (event, args) => {
+    let today = new Date()
+    let todayString = `${today.getMonth() + 1}_${today.getDate()}_${today.getFullYear()}`;
+    let callCount = store.get("dictionary_apicalls");
+    let date = store.get("date");
+    if(!date || date != todayString){
+      callCount = 0;
+      date = todayString;
+    }
+    if(!callCount) callCount = 0;
+    store.set("dictionary_apicalls", callCount + 1);
+    store.set("date", date);
+  })
+
   ipcMain.on('pomoNotification', (event, args) =>{
     launchPomodoroNotification(args.title, args.body)
   });

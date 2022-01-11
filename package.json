@@ -6,6 +6,7 @@
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-packager . --out=C:/JohnsApps --overwrite",
+    "package-prod": "electron-packager . --out=./Publish --overwrite",
     "make": "electron-forge make"
   },
   "keywords": [],

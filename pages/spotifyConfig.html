@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <style>
+            body{
+                background-color: #2D2D2D;
+                color: white;
+                font-family: 'Cascadia Code ExtraLight';
+            }
+            h1{
+                font-size: 25px;
+            }
+            .spotify-form-item{
+                display: flex;
+                justify-content: space-between;
+            }
+            #accessToken {max-width: 50%;}
+            input {
+                background-color: rgb(70,70,70);
+                color: white;
+                width: 275px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Spotify Config</h1>
+        <div class="spotify-form-item">
+            <label>Client Id</label>
+            <input id="clientId" type="text" />
+        </div>
+        <div class="spotify-form-item">
+            <label>Client Secret</label>
+            <input id="clientSecret" type="text" />
+        </div>
+        <div class="spotify-form-item">
+            <label>Shortcut</label>
+            <input id="shortcut" type="text" />
+        </div>
+        <div class="spotify-form-item">
+            <label>Access Token</label>
+            <label id="accessToken"></label>
+        </div>
+        <div class="spotify-form-item">
+            <label>Access Token Set At</label>
+            <label id="accessTokenSetAt"></label>
+        </div>
+    </body>
+</html>

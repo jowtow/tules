@@ -71,6 +71,49 @@ let launcher = {
         win.loadFile('./pages/dictionary.html');
         win.on('blur', () => win.close());
     },
+    launchSpotifyUI: function () {
+        let display = screen.getPrimaryDisplay();
+        let width = display.bounds.width;
+        let height = display.bounds.height;
+        let win = new BrowserWindow({
+            width: 600,
+            height: 125,
+            x: width - (600 + 10),
+            y: height - (125 + 60),
+            frame: false,
+            transparent: true,
+            autoHideMenuBar: true,
+            movable: false,
+            skipTaskbar: true,
+            webPreferences:{
+               preload: path.join(__dirname, './features/preloadSpotify.js'),
+            }
+        });
+        launcher.preventCloseFromQuittingApp(win);
+        win.loadFile('./pages/spotifyClient.html');
+        win.on('blur', () => win.close());
+    },
+    launchSpotifyConfiguration: function () {
+        let display = screen.getPrimaryDisplay();
+        let width = display.bounds.width;
+        let height = display.bounds.height;
+        const win1 = new BrowserWindow({
+            x: width - (500 + 10),
+            y: height - (350 + 10),
+            width: 500,
+            height: 350,
+            movable: false,
+            frame: false,
+            skipTaskbar: true,
+            autoHideMenuBar: true,
+            webPreferences: {
+                preload: path.join(__dirname, './features/preloadSpotifyConfig.js'),
+            }
+        });
+        launcher.preventCloseFromQuittingApp(win1);
+        win1.loadFile("./pages/spotifyConfig.html");
+        win1.on('blur', () => win1.close());
+    },
     preventCloseFromQuittingApp: function (win) {
         win.on('close', (event) => {
             if (!app.isQuitting) {

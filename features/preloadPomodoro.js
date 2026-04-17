@@ -1,18 +1,4 @@
-const {
-    contextBridge,
-    ipcRenderer
-} = require("electron");
-
-contextBridge.exposeInMainWorld(
-    "api", {
-    send: (channel, data) => {
-        ipcRenderer.send(channel, data);
-    },
-    receive: (channel, func) => {
-        ipcRenderer.on(channel, (event, ...args) => func(...args));
-    }
-}
-);
+const { ipcRenderer } = require("electron");
 
 window.addEventListener('DOMContentLoaded', () => {
     var frequencyInput = document.querySelector("#pfreq");

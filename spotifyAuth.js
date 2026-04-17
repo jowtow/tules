@@ -17,8 +17,11 @@ async function GetAccessToken(client_id, client_secret, callbackToMain) {
         width: 800,
         height: 600,
         show: false,
-        'node-integration': false,
-        'web-security': false
+        webPreferences: {
+            // nodeIntegration must remain false for the OAuth redirect page
+            nodeIntegration: false,
+            contextIsolation: true,
+        },
     });
     var scope = 'user-read-private user-read-email app-remote-control user-modify-playback-state user-read-playback-state';
     var state = generateRandomString(16);
@@ -42,7 +45,8 @@ async function GetAccessToken(client_id, client_secret, callbackToMain) {
             url: 'https://accounts.spotify.com/api/token',
             method: 'POST',
             headers: {
-                'Authorization': `Basic ${(new Buffer(client_id + ':' + client_secret).toString('base64'))}`
+                // Buffer.from replaces the deprecated new Buffer() constructor
+                'Authorization': `Basic ${Buffer.from(client_id + ':' + client_secret).toString('base64')}`
             },
             params: {
                 code: code,

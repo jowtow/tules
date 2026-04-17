@@ -27,6 +27,10 @@ let launcher = {
             autoHideMenuBar: true,
             webPreferences: {
                 preload: path.join(__dirname, './features/preloadPomodoro.js'),
+                contextIsolation: true,
+                nodeIntegration: false,
+                // sandbox is false because the preload uses npm packages (axios, moment)
+                sandbox: false,
             }
         });
         launcher.preventCloseFromQuittingApp(win1);
@@ -48,6 +52,9 @@ let launcher = {
             autoHideMenuBar: true,
             webPreferences: {
                 preload: path.join(__dirname, './features/preloadDictionaryConfig.js'),
+                contextIsolation: true,
+                nodeIntegration: false,
+                sandbox: false,
             }
         });
         launcher.preventCloseFromQuittingApp(win1);
@@ -65,6 +72,9 @@ let launcher = {
             skipTaskbar: true,
             webPreferences:{
                 preload: path.join(__dirname, './features/preloadDictionary.js'),
+                contextIsolation: true,
+                nodeIntegration: false,
+                sandbox: false,
             }
         });
         launcher.preventCloseFromQuittingApp(win);
@@ -87,6 +97,9 @@ let launcher = {
             skipTaskbar: true,
             webPreferences:{
                preload: path.join(__dirname, './features/preloadSpotify.js'),
+               contextIsolation: true,
+               nodeIntegration: false,
+               sandbox: false,
             }
         });
         launcher.preventCloseFromQuittingApp(win);
@@ -108,6 +121,9 @@ let launcher = {
             autoHideMenuBar: true,
             webPreferences: {
                 preload: path.join(__dirname, './features/preloadSpotifyConfig.js'),
+                contextIsolation: true,
+                nodeIntegration: false,
+                sandbox: false,
             }
         });
         launcher.preventCloseFromQuittingApp(win1);

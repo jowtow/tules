@@ -1,30 +1,26 @@
 {
   "name": "tules",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "just some tools for developers",
   "main": "main.js",
   "scripts": {
     "start": "electron-forge start",
-    "package": "electron-packager . --out=C:/JohnsApps --overwrite",
-    "package-prod": "electron-packager . --out=./Publish --overwrite",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "make-mac": "electron-forge make --platform darwin",
+    "make-win": "electron-forge make --platform win32"
   },
   "keywords": [],
   "author": "John Townsend",
   "license": "ISC",
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.54",
-    "@electron-forge/maker-deb": "^6.0.0-beta.54",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
-    "@electron-forge/maker-squirrel": "latest",
-    "@electron-forge/maker-wix": "^6.0.0-beta.54",
-    "@electron-forge/maker-zip": "^6.0.0-beta.54",
-    "electron": "^12.0.2",
-    "electron-packager": "^15.2.0"
+    "@electron-forge/cli": "^7.11.1",
+    "@electron-forge/maker-dmg": "^7.11.1",
+    "@electron-forge/maker-squirrel": "^7.11.1",
+    "@electron-forge/maker-zip": "^7.11.1",
+    "electron": "^41.0.0"
   },
-  "config": {},
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^1.7.0",
     "moment": "^2.29.4"
   }
 }

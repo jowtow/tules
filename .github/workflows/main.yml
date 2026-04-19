@@ -24,6 +24,24 @@ jobs:
       - name: Verify forge config
         run: npx electron-forge --version
 
+# Test: verify the app starts on macOS on every push/PR
+  test-mac:
+    runs-on: macos-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+      - name: Smoke test (launch app on macOS)
+        run: npm test
+      - name: Package (macOS - verify the build produces a valid .app)
+        run: npx electron-forge package --platform darwin
+
 # Release: build native installers for macOS and Windows on version tags
   release-mac:
     if: startsWith(github.ref, 'refs/tags/v')

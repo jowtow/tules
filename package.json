@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron-forge start",
+    "test": "electron test/smoke.js",
     "make": "electron-forge make",
     "make-mac": "electron-forge make --platform darwin",
     "make-win": "electron-forge make --platform win32"

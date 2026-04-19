@@ -6,6 +6,11 @@ const Store = require('./features/store.js');
 const spotifyAuth = require("./spotifyAuth.js");
 let tray;
 
+// On macOS the app should live only in the menu bar, not the Dock.
+if (process.platform === 'darwin') {
+  app.dock.hide();
+}
+
 app.whenReady().then(() => {
   setupBackgroundProcesses();
   setupMessageListeners();
@@ -88,7 +93,10 @@ function setupKeyboardShortcuts() {
 }
 
 function setupTray() {
-  tray = new Tray(path.join(__dirname, "favicon.ico"));
+  const trayIcon = process.platform === 'darwin'
+    ? path.join(__dirname, 'android-chrome-512x512.png')
+    : path.join(__dirname, 'favicon.ico');
+  tray = new Tray(trayIcon);
   tray.setToolTip("tules are not rules");
 
   var trayMenu = new Menu();

@@ -1,6 +1,6 @@
 const pomodoro = require('./features/pomodoro');
 const launcher = require('./launcher.js');
-const { app, Menu, Tray, MenuItem, ipcMain, globalShortcut} = require('electron')
+const { app, Menu, Tray, MenuItem, ipcMain, globalShortcut, nativeImage } = require('electron')
 const path = require('path')
 const Store = require('./features/store.js');
 const spotifyAuth = require("./spotifyAuth.js");
@@ -93,9 +93,17 @@ function setupKeyboardShortcuts() {
 }
 
 function setupTray() {
-  const trayIcon = process.platform === 'darwin'
-    ? path.join(__dirname, 'android-chrome-512x512.png')
-    : path.join(__dirname, 'favicon.ico');
+  let trayIcon;
+  if (process.platform === 'darwin') {
+    // macOS menu bar icons must be 16x16 (or 32x32 @2x) and should be
+    // template images so the OS adapts them to light/dark mode.
+    trayIcon = nativeImage
+      .createFromPath(path.join(__dirname, 'android-chrome-512x512.png'))
+      .resize({ width: 16, height: 16 });
+    trayIcon.setTemplateImage(true);
+  } else {
+    trayIcon = path.join(__dirname, 'favicon.ico');
+  }
   tray = new Tray(trayIcon);
   tray.setToolTip("tules are not rules");
 
